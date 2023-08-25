@@ -3,13 +3,13 @@ import './PdfUploadForm.css'
 import { usePdfContext } from '../context/PdfContext';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { collection, addDoc, getFirestore } from 'firebase/firestore';
-import {db, storage } from '../firebase.js';
+import { db, storage } from '../firebase.js';
 import DynamicSVG from './DynamicSVG';
 
 const PdfUploadForm = () => {
   const { pdfUrls, setPdfUrls } = usePdfContext();
-  const [isProgress, setProgress] =useState(false)
-  const [isUpload, setUpload] =useState(false)
+  const [isProgress, setProgress] = useState(false)
+  const [isUpload, setUpload] = useState(false)
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
 
@@ -53,39 +53,59 @@ const PdfUploadForm = () => {
       }
     }
   };
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    setSelectedFile(file);
+    setUpload(true);
+  };
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
   const addPdfMetadata = async (pdfMetadata) => {
     const pdfsCollection = collection(db, 'pdfs');
     await addDoc(pdfsCollection, pdfMetadata);
   };
-useEffect(()=>{
- setTimeout(() => {
-  setProgress(false)
- }, 6000);
-},[isProgress])
+  useEffect(() => {
+    setTimeout(() => {
+      setProgress(false)
+    }, 6000);
+  }, [isProgress])
   return (
-    <div className="new-assessment p30 border-dashed borderR12 flex-col alignC gap10 bg-main pos-rel">
-      {selectedFile && isUpload && <p className='pos-abs top0 left w-100 ellipsis textC color-theme fs12 fw-500'>{selectedFile.name}</p>}
+    <div
+      className="new-assessment p16 border-dashed borderR12 flex-col w-300 gap10 bg-main pos-rel mB20 gap10 overf-H"
+      onDrop={handleDrop} // Handle dropped files
+      onDragOver={handleDragOver} // Handle drag over
+    >
+      {selectedFile && isUpload && (
+        <div className='border1 p5 borderR6  ellipsis flexC justifySB color-theme fs12 fw-500'>{selectedFile.name}
+          <button className='u-btn close-btn' onClick={() =>setSelectedFile(null)}>
+            <DynamicSVG svgName={'smclose'} />
+          </button>
+        </div>
+      )}
 
-      { (selectedFile && isProgress) && <div className="progress-bar">
-
-        <div className="flexM progress-fill"  style={{width:`${uploadProgress}%`}}> <span className='pX10'>{uploadProgress.toFixed(2)}%</span></div>
-      </div>}
-      <div className="flex gap20">
-        <button type="button" className="plus-icon border0 flexM  bg-white borderR-full cur">
-          <label htmlFor="pdfUploader" className='pdf-box-label cur flexM'>
+      {selectedFile && isProgress && (
+        <div className="progress-bar">
+          <div className="flexM progress-fill" style={{ width: `${uploadProgress}%` }}>
+            <span className='pX10'>{uploadProgress.toFixed(2)}%</span>
+          </div>
+        </div>
+      )}
+      <div className={`flexC justifySB ${(selectedFile && isProgress) ? 'mT10' : ''}`}>
+          <label htmlFor="pdfUploader" className='pdf-box-label cur whiteS flexC gap10 pX10 bg-white border1 color-theme'>
             <input className='pdf-file-input dN' id='pdfUploader' type="file" accept=".pdf" onChange={handleFileChange} />
-            <DynamicSVG svgName={'plus'} />
+            Choose File
+            <span className="material-symbols-outlined color-theme">
+              upload
+            </span>
           </label>
+        <button type="button" className="u-btn u-btn-primary " disabled={!selectedFile || !isUpload} onClick={handleUpload}>
+          upload
         </button>
-        { isUpload && <button type="button" className="plus-icon border0 flexM  bg-white borderR-full cur"  onClick={handleUpload}>
-          <span className="material-symbols-outlined">
-            upload
-          </span></button>}
       </div>
 
-      <h4 className="color-theme fs18 fw-500">Uplaod New Pdf</h4>
-      <p className="fs12 fw-500 color-theme textC">From here you can add PDF.</p>
     </div>
   );
 };

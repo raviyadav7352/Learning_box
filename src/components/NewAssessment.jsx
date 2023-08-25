@@ -33,11 +33,10 @@ const NewAssessment = ({ assessmentTotal }) => {
 
     return (
         <>
-            <div className="new-assessment p30 border-dashed borderR12 flex-col alignC gap10 bg-main">
+            <div className="new-assessment p30 border-dashed borderR12 flex alignC gap10 bg-main">
                 <button type="button" className="plus-icon border0 flexM p10 bg-white borderR-full cur" onClick={handleToggleModal}>
                     <DynamicSVG svgName={'plus'} />
                 </button>
-                <PdfUploadForm></PdfUploadForm>
 
                 <h4 className="color-theme fs18 fw-500">New PDF</h4>
                 <p className="fs12 fw-500 color-theme textC">From here you can add PDF.</p>

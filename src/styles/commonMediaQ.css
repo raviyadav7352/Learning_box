@@ -26,12 +26,18 @@
         border-right: 1px solid var(--color-border);
         border-bottom: 1px solid var(--color-border);
     }
-
+    .action-box {
+        min-width: 100px !important;
+    }
     .overview:nth-child(4) {
         grid-column: 1 / span 1;
         grid-row: 2 / span 1;
     }
-
+    .pdf-viewer .pdf-viewer-container {
+        width: 98%;
+        height: 90vh;
+        top: 20px;
+    }
     .assessment-overview .overview:nth-child(4) {
         border-right: 1px solid var(--color-border) ;
     }

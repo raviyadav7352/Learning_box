@@ -7,19 +7,20 @@ const Dropdown = ({
   value,
   onChange,
   error,
-  placeholder
+  placeholder,
+  stylesValue
 }) => {
   return (
-    <div className="u-dropdown">
+    <div className={`u-dropdown ${stylesValue}`}>
       <div className="nf-dropdown-body pos-rel">
-        <label className="u-form-label">{label}</label>
+        {label && <label className="u-form-label">{label}</label>}
         <select
           className="u-form-control"
           value={value}
           onChange={onChange}
           title={`${label} List`}
         >
-          <option value="" className="">
+          <option value="" className="" >
             {placeholder}
           </option>
           {options.map((option, index) => (

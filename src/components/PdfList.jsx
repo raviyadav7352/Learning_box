@@ -19,6 +19,9 @@ import {
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
+import PdfViewer from './PdfViewer';
+import Dropdown from './DropdownComponent';
+import PdfTable from './PdfTable';
 
 
 const PdfList = () => {
@@ -118,82 +121,42 @@ const PdfList = () => {
       console.error('Error deleting PDF:', error);
     }
   };
-  
-  return (
-    <>
-    <div className="view-dropdown">
-      <label htmlFor="viewType">Select View:</label>
-      <select id="viewType" value={viewType} onChange={handleViewTypeChange}>
-        <option value="list">List View</option>
-        <option value="table">Table View</option>
-        <option value="detail">Detail View</option>
-        <option value="tile">Tile View</option>
-        <option value="icon">Icon View</option>
-        <option value="card">Card View</option>
-      </select>
-    </div>
 
-    {isLoading && <Loader />}
+  const handleOpenConfirmation = (pdf) => {
+    setPdfToDelete(pdf);
+  };
+
+  const handleCloseConfirmation = () => {
+    setPdfToDelete(null);
+  };
+  const viewTypeList = ['table','card'];
+  return (
+    <div>
+      <Dropdown
+        label="Select View"
+        options={viewTypeList}
+        value={viewType}
+        onChange={handleViewTypeChange}
+        placeholder="select view "
+        stylesValue={'w-fit mB20'}
+      />
+<div className="">
+{isLoading && <Loader />}
       {!isLoading && (
-        <div className="pdf-list flex flexW">
-          
-            {viewType == 'table' && <TableContainer component={Paper}>
-              <Table aria-label="PDF table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Size</TableCell>
-                    <TableCell>Date Created</TableCell>
-                    <TableCell>Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {pdfs.map((pdfdata, index) => (
-                    <TableRow key={index}>
-                      <TableCell>{pdfdata.name}</TableCell>
-                      <TableCell>{pdfdata.sizeFormatted}</TableCell>
-                      <TableCell>{pdfdata.creationDate}</TableCell>
-                      <TableCell className='flex'>
-                      <div className="flex">
-                        <IconButton
-                          onClick={() => handleOpenPdf(pdfdata)}
-                          aria-label="View PDF"
-                        >
-                          <VisibilityIcon />
-                        </IconButton>
-                        <IconButton
-                          onClick={() => handleSharePdf(pdfdata.url)}
-                          aria-label="Share PDF"
-                        >
-                          <ShareIcon />
-                        </IconButton>
-                        <IconButton
-                          onClick={() => handleDeletePdf(pdfdata.ref)}
-                          aria-label="Delete PDF"
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-                {/* <TableBody>
-                  {pdfs.map((pdfdata, index) => (
-                    <p>{pdfdata.name}</p>
-                    // <MyAssessment
-                    //   pdfdata={pdfdata}
-                    //   key={index}
-                    //   setPdfToDelete={setPdfToDelete}
-                    //   pdfToDelete={pdfToDelete}
-                    //   handleDeletePdf={handleDeletePdf}
-                    // />
-                  ))}
-                </TableBody> */}
-              </Table>
-            </TableContainer>}
-           
-           {viewType !=='table' && pdfs.map((pdfdata, index) => (
+        <div className={`pdf-list flex gap20 flexW ${viewType == '' || viewType == 'card'? 'grid grid-col3 grid-sm-col1 grid-md-col2': 'w-80'} `}>
+          {viewType === 'table' && (
+            <PdfTable
+              pdfs={pdfs}
+              isPdfViewerOpen={isPdfViewerOpen}
+              setIsPdfViewerOpen={setIsPdfViewerOpen}
+              handleSharePdf={handleSharePdf}
+              handleOpenConfirmation={handleOpenConfirmation}
+              handleDeletePdf={handleDeletePdf}
+              handlePdfViewerOpen={handlePdfViewerOpen}
+            />
+          )}
+
+          {viewType !== 'table' && pdfs.map((pdfdata, index) => (
             <MyAssessment
               pdfdata={pdfdata}
               key={index}
@@ -205,7 +168,9 @@ const PdfList = () => {
           ))}
         </div>
       )}
-      </>
+</div>
+
+    </div>
   );
 };
 

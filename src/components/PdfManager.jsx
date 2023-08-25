@@ -5,12 +5,12 @@ import DynamicSVG from './DynamicSVG';
 
 const PdfManager = () => {
   return (
-    <div>
-            <PdfUploadForm></PdfUploadForm>
 
-        <div className="flex gap30 sm-gap15">
-            <PdfList></PdfList>
-        </div>
+
+
+    <div className="flex-col gap30 sm-gap15">
+      <PdfUploadForm></PdfUploadForm>
+      <PdfList></PdfList>
     </div>
   );
 };

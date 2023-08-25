@@ -77,6 +77,7 @@ ul.list, ol.list{
 .w-50 { width: 50%; }
 .w-25 { width: 25%; }
 .w-80{width:80%;}
+.w-300{width: min(300px, 100%);}
 .w-600{width: min(600px, 100%);}
 .w-590{width: min(590px, 95%);}
 
@@ -101,7 +102,7 @@ ul.list, ol.list{
 .textT-Capitilize, .text-capitilize{text-transform: capitalize;}
 .textJ{text-align: justify;}
 .whiteS{white-space: nowrap;}
-.ponter-none{pointer-events: none;}
+.ponter-none, .pointerN{pointer-events: none;}
 .textUnder{text-decoration: underline;}
 .visible{visibility: visible;}
 /* postion  */
@@ -136,6 +137,7 @@ ul.list, ol.list{
 /* border */
 .border1{border: 1px solid var(--color-border);}
 .borderR12{border-radius: 12px;}
+.borderR6{border-radius: 6px}
 .borderR-full{border-radius: 100%;}
 .dashed-hor-line{border-top: 1px dashed var(--color-border);}
 .border-dashed{border: 1px dashed var(--color-border);}

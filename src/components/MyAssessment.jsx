@@ -13,7 +13,6 @@ const MyAssessment = ({ pdfdata, setPdfToDelete, pdfToDelete, handleDeletePdf,vi
     const [isPdfViewerOpen, setIsPdfViewerOpen] = useState(false);
     const [isLocalModalOpen, setIsLocalModalOpen] = useState(false);
     const thumbnail = { src: pdfdata.url, thumbnail: pdfdata.url, thumbnailWidth: 320, thumbnailHeight: 320 };
-    console.log(thumbnail)
     const handlePdfViewerOpen = () => {
         setIsPdfViewerOpen(true);
     };
@@ -25,49 +24,17 @@ const MyAssessment = ({ pdfdata, setPdfToDelete, pdfToDelete, handleDeletePdf,vi
     const handleMoreMenu = () => {
         setShowMenu(!showMenu);
     };
+
     const renderViewBasedOnType = () => {
-        if (viewType === 'card') {
-          return (
-            <Card className="my-assessment-card">
-            <CardContent>
-              <Typography variant="h6" component="div">
-                {pdfdata.name}
-              </Typography>
-              <Typography color="text.secondary">
-                {pdfdata.sizeFormatted} | {pdfdata.creationDate}
-              </Typography>
-              <div className="my-assessment-actions">
-                <IconButton
-                  aria-label="Delete"
-                  onClick={() => {
-                    setPdfToDelete(pdfdata);
-                  }}
-                >
-                  <Delete />
-                </IconButton>
-              </div>
-            </CardContent>
-          </Card>
-          );
-        } else if (viewType === 'list') {
-          return (
-            // Render list view here
-            "rdtfgyhujk"
-          );
-        
-        } else if (viewType === 'tile') {
+       
+       if (viewType === 'list') {
           return (
             <div className="tile-view">
           <img src={pdfdata.url} alt={pdfdata.name} />
           <p>{pdfdata.name}</p>
         </div>
           );
-        } else if (viewType === 'icon') {
-          return (
-            // Render icon view here
-            'qwertyuiop'
-          );
-        } else {
+        }  else {
           // Default view if viewType is not recognized
           return (
             <div className="">
@@ -135,7 +102,7 @@ const MyAssessment = ({ pdfdata, setPdfToDelete, pdfToDelete, handleDeletePdf,vi
 
                     <div className="share-box color-theme fs14 fw-500 cur">
                         <button className='u-btn u-btn-borderless' onClick={handlePdfViewerOpen}>Open PDF</button>
-                        <PdfViewer pdfUrl={pdfdata.url} isPdfViewerOpen={isPdfViewerOpen} setIsPdfViewerOpen={setIsPdfViewerOpen} ></PdfViewer>
+                        <PdfViewer pdfUrl={pdfdata.url} isPdfViewerOpen={isPdfViewerOpen} setIsPdfViewerOpen={setIsPdfViewerOpen} onClose={handlePdfViewerClose}></PdfViewer>
                     </div>
 
                 </div>
