@@ -1,0 +1,73 @@
+.u-sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-white);
+    border-right: 16px solid var(--main-bg);
+}
+
+.u-sidebar-menu-item {
+    width: 90px;
+    height: 70px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: border .2s ease-in, background-color .2s ease-in;
+}
+
+.u-sidebar-menu-item.active {
+    border: 1px solid #0073E6;
+    background-color: #E5F1FC;
+}
+
+.u-sidebar-menu-item.active .u-sidebar-item-link {
+    color: #0073E6;
+}
+
+.u-sidebar-menu-item.active svg {
+    fill: #0073E6;
+}
+
+.u-sidebar-menu-item a svg path {
+    fill: #1c4980;
+}
+
+.u-sidebar-menu-item.active a svg path {
+    fill: #0073e6;
+}
+
+.u-sidebar-menu-item-diff {
+    width: 90px;
+    height: 70px;
+    padding: 25px 0px 10px;
+}
+
+.u-sidebar-item-link {
+    font-size: var(--fs12);
+    font-weight: 500;
+    color: #1C4980;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.u-btn-box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border-top: 1px dashed #BACBD5;
+}
+
+.u-btn-admin {
+    font-size: var(--fs10);
+    font-weight: 500;
+    color: #D63500;
+    border: 1px solid var(--accent-new-red, #D63500);
+    border-radius: 22px;
+    background: var(--accent-red-light, #FBEBEA);
+    padding: 6px 8px;
+    min-width: unset;
+    font-family: system-ui;
+    height: 18px;
+}

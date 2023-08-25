@@ -1,0 +1,195 @@
+.more-icon {
+    height: 30px;
+    width: 30px;
+    top: 0;
+    right: 0;
+}
+.more-icon:hover {
+    background-color: var(--main-bg);
+    border-radius: 100%;
+}
+
+.share-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    /* padding: 0px 10px 2px 10px; */
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid var(--color-theme);
+    background: var(--bg-white);
+}
+
+.avatar-body {
+    position: relative;
+    display: flex;
+    /* width: 60px; */
+    align-items: center;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 5px 6px;
+    border-radius: 100%;
+    background: #6548EE;
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid white;
+    position: relative;
+}
+
+.avatar:nth-child(2) {
+    background-color: #3079E1;
+}
+
+.avatar:last-child {
+    background-color: #E9407A;
+}
+
+.more-menu {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    /* min-width: 100px; */
+    text-align: center;
+    transition: all 0.2s ease-out;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.more-menu.showMenu {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.more-menu-item {
+    padding: 4px 20px;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.more-menu-item:hover {
+    background-color: var(--main-bg);
+}
+
+.more-menu-item:last-child {
+    border-bottom: none;
+}
+/* css for share tile */
+.hover {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    background-color: #4DB6AC;
+    border-radius: 99px;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+  }
+  .hover:before, .hover:after {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    transition: 0.25s linear;
+    z-index: 1;
+  }
+  .hover:before {
+    content: "";
+    left: 0;
+    justify-content: flex-end;
+    /* background-color: #4DB6AC; */
+    background-color: var(--color-info);
+  }
+  .hover:after {
+    content: "";
+    right: 0;
+    justify-content: flex-start;
+    /* background-color: #44a69c; */
+    background-color: var(--color-info);
+  }
+  .hover:hover {
+    background-color: #46627f;
+    /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
+    box-shadow: var(--shadow-outline);
+  }
+  .hover:hover span {
+    opacity: 0;
+    z-index: -3;
+  }
+  .hover:hover:before {
+    opacity: 0.5;
+    transform: translateY(-100%);
+  }
+  .hover:hover:after {
+    opacity: 0.5;
+    transform: translateY(100%);
+  }
+  .hover span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: whitesmoke;
+    font-family: "Fira Mono", monospace;
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 0.25s;
+    z-index: 2;
+  }
+  .hover .social-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    color: whitesmoke;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.25s;
+  }
+  .hover .social-link i {
+    text-shadow: 1px 1px rgba(70, 98, 127, 0.7);
+    transform: scale(1);
+  }
+  .hover .social-link:hover {
+    background-color: rgba(245, 245, 245, 0.1);
+  }
+  .hover .social-link:hover i {
+    animation: bounce 0.4s linear;
+  }
+  
+  @keyframes bounce {
+    40% {
+      transform: scale(1.4);
+    }
+    60% {
+      transform: scale(0.8);
+    }
+    80% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

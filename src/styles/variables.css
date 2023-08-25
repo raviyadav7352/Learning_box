@@ -1,0 +1,44 @@
+:root {
+    --body-bg: #fff;
+    --bg-white:#fff;
+    --main-bg: #F6F8FA;
+    --color-body:#212529;
+    --color-white:#fff;
+    --color-active:#0073E6; 
+    --color-placeholder:#555;
+    --color-success:#05C165;
+    --color-info: #8DA4BF;
+    --color-disable:#cfcdcd;
+    --disable-bg:#ecdfdf;
+    --color-failed: #e52929;
+    --shadow-up:4px 0px 8px rgba(0, 0, 0, 0.1);
+    --shadow-outline:0px 0px 4px -1px rgba(0,0,0,0.5);
+    --bg-btn:#0A4598;
+    --color-border: #DDE5EA;
+    --color-theme:#1C4980; 
+    --fs10:0.625rem;
+    --fs11:0.6875rem;
+    --fs12: 0.75rem;
+    --fs13: 0.8125rem;
+    --fs14: 0.875rem;
+    --fs15: .9375rem;
+    --fs16: 1rem;
+    --fs18: 1.125rem;
+    --fs20: 1.25rem;
+    --fs22: 1.375rem;
+    --fs24: 1.5rem;
+    --fs26: 1.625rem;
+   
+}
+.fw-normal{font-weight: 400;}
+.fw-500{font-weight: 500;}
+.fW-bold{font-weight: 600!important;}
+.color-info{color: var(--color-info) !important;}
+.color-failed{color: var(--color-failed);}
+.color-theme{color: var(--color-theme);}
+.color-success{color: var(--color-success);}
+.color-active{color: var(--color-active);}
+.bg-white{background-color: var(--bg-white);}
+.bg-main{background-color: var(--main-bg);}
+.bg-disable{background-color: var(--color-disable);}
+.bg-failed{background-color:var(--color-failed)}

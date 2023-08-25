@@ -1,0 +1,23 @@
+.pdf-file-input {
+    background: transparent;
+    border: none;
+    position: absolute;
+}
+
+  .progress-bar {
+    width: 100%;
+    height: 16px;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    background: #d3f6cb;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+  }
+  .progress-fill {
+    background: #75e359;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--color-white);
+    width: 0;
+}

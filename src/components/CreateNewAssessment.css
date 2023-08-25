@@ -1,0 +1,57 @@
+.create-new-modal-body {
+    margin: auto;
+    background-color: var(--bg-white);
+    width: min(590px, 100%);
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+.u-form-group.skill-wrap {
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+}
+
+.skill-box {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.skill-set-item {
+    background-color: #DDEDFF;
+    width: fit-content;
+    padding: 6px 8px 6px 10px;
+    border-radius: 20px;
+    color: var(--color-theme);
+    font-weight: 500;
+}
+
+.skill-close-icon {
+    width: 18px;
+    height: 18px;
+    font-size: var(--fs18);
+    color: var(--color-theme);
+    font-weight: 500;
+}
+
+.u-form-control.special:focus {
+    border-radius: 0 0 4px 4px;
+}
+
+.create-modal-footer {
+    position: sticky;
+    background: var(--bg-white);
+    border-radius: 0 0 12px 12px;
+    box-shadow: var(--shadow-up);
+}
+
+.create-modal-content {
+    overflow: auto;
+    height: inherit;
+    flex-grow: 1;
+}
+
+.create-modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
