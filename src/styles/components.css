@@ -221,6 +221,7 @@
     border: 1px solid var(--color-border);
     right: 0;
     top: 0;
+    z-index:3;
 }
 .u-modal-body {
     background-color: var(--body-bg);
